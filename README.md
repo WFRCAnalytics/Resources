@@ -1,4 +1,6 @@
 # Resources
+- General
+  - [WFRC GitHub Google Doc](https://docs.google.com/document/d/1t6blGoa8V1jdCKJKd6VHwqqs6fszOxebIP4y0fXem-A/edit)
 
 - Markdown cheatsheets
   - [Markdown cheat sheet](https://www.markdownguide.org/cheat-sheet/)
