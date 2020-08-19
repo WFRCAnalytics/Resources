@@ -10,8 +10,8 @@
 - Version Control
   - [The Basics of Version Control System Git Explained by Designing A New Car](https://pixelpioneers.co/blog/2017/git-basics-explained-by-designing-a-new-car)
   
- 
-  
 - Project Management
   - [Github Project Management Tutorial - Setup Github Projects & Automations](https://www.youtube.com/watch?v=ff5cBkPg-bQ)
   
+- Setup Jupyter using ArcGIS Pro
+  - [1.5 Hour Demo](https://drive.google.com/file/d/1PS_b2Hsa8oGNv4unmrmxHT1Mv3xS5GoM/view?usp=sharing)
