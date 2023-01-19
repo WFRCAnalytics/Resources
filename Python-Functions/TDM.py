@@ -1,5 +1,11 @@
+import re
+
+def tdmHelloWorld():
+    print('Hello TDM World')
+
 # function to return control center value base on variable name
 def getControlCenterValue(ccFile,ccVariable):
+    
     # Using readlines()
     file1 = open(ccFile, 'r')
     Lines = file1.readlines()
@@ -15,4 +21,6 @@ def getControlCenterValue(ccFile,ccVariable):
         #_splitlinenew = list(filter(lambda x: x[0].lower() != x[0].upper(), _splitline))
         if len(_splitline)>1:
             if _splitline[0]==ccVariable:
-                print(_splitline[1])
+                #print(_splitline[1])
+                return _splitline[1]
+    return ""
