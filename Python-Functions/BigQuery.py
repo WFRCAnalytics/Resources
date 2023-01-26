@@ -1,9 +1,10 @@
-# Delete Rows
 #google cloud big query libraries
 from google.cloud import bigquery
 from google.oauth2 import service_account
+import os
 
-def getBigQueryClient(): 
+# get client based  on current username
+def getBigQueryClient_TDMScenarios(): 
 
     if os.getlogin()=='cday':
         key_path = r"C:\Users\cday\tdm-scenarios-c90ba30c3c5d.json"
@@ -18,4 +19,3 @@ def getBigQueryClient():
     
     return bigquery.Client(credentials=credentials, project=credentials.project_id,)
 
-# Append Rows
