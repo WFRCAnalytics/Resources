@@ -6,7 +6,7 @@ output: html_document
 ---
 # {.tabset}
 ## Introduction 
-R is an open source programming language used for data analysis and statistical computer and graphics. R syntax consists of variables, comments, and keywords. It was developed in 1993 and is compatible with Windows, Macintosh, UNIX, and Linux platforms.
+R is an open source programming language used for data analysis and statistical computing and graphics. R syntax consists of variables, comments, and keywords. It was developed in 1993 and is compatible with Windows, Macintosh, UNIX, and Linux platforms.
 
 Random Notes:
   
