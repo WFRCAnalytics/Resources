@@ -1,0 +1,228 @@
+---
+title: "Intro to R"
+author: "Chris Day"
+date: "2023-02-13"
+output: html_document
+---
+# {.tabset}
+## Introduction 
+R is an open source programming language used for data analysis and statistical computing and graphics. R syntax consists of variables, comments, and keywords. It was developed in 1993 and is compatible with Windows, Macintosh, UNIX, and Linux platforms.
+
+Random Notes:
+  
+  - RStudio is like the "VS Code" for R
+  - RMarkdown is like the "Jupyter Notebook" for R
+
+
+### Some of the Pros
+
+  - Open Source
+  - Platform-independent
+  - LOTs of packages (> 10,000)
+  - Great for statistics
+  - Good for machine learning
+  - Data wrangling
+  - Data visualization
+  - Still growing
+  
+### Some of the Cons
+
+  - Complicated language...apparently
+  - Not as secure (may not be the safest for web applications?)
+  - Slow (slower than Python)
+  - Takes up a lot of memory
+  - Sometimes inconsistent documentation/package quality
+  
+## Packages
+Before writing any R code you must first import the needed libraries.
+
+```{r, warning=FALSE,message=FALSE}
+library(tidyverse)
+library(simplevis)
+library(dplyr)
+library(palmerpenguins)
+library(sf)
+library(leaflet)
+library(plotly)
+```
+
+
+## Tidyverse
+Tidyverse is a library with lots of useful functions for data wrangling. Here are a few examples.
+
+### Filter
+```{r}
+starwars %>% 
+  filter(species == "Droid")
+```
+
+### Select
+```{r}
+starwars %>% 
+  select(name, ends_with("color"))
+```
+
+### Mutate
+```{r}
+starwars %>% 
+  mutate(name, bmi = mass / ((height / 100)  ^ 2)) %>%
+  select(name:mass, bmi)
+```
+
+### Arrange
+```{r}
+starwars %>% 
+  arrange(desc(mass))
+```
+
+### Summarise
+```{r}
+starwars %>%
+  group_by(species) %>%
+  summarise(
+    n = n(),
+    mass = mean(mass, na.rm = TRUE)
+  ) %>%
+  filter(
+    n > 1,
+    mass > 50
+  )
+```
+
+
+
+## GGPlot / Plotly
+
+### Point Chart
+```{r, warning=FALSE}
+ggplot(starwars, aes(height, mass)) + 
+  geom_point()
+```
+
+```{r}
+starwars2 <- filter(starwars, name != "Jabba Desilijic Tiure")
+ggplot(starwars2, aes(height, mass, colour = species)) + 
+  geom_point()
+```
+
+### Histogram / Density
+```{r}
+ggplot(data = starwars, mapping = aes(x = height)) +
+  geom_histogram(binwidth = 10)
+```
+
+```{r}
+ggplot(data = starwars, mapping = aes(x = height)) +
+  geom_density()
+```
+
+### Bar Plot
+```{r}
+ggplot(data = starwars, mapping = aes(x = gender, fill = hair_color)) +
+  geom_bar(position = "fill") +
+  labs(y = "proportion")
+```
+
+```{r}
+p1 <- plot_ly(starwars, type='bar', x = ~species, y = ~sex)
+p1
+```
+
+
+### Boxplots
+```{r, warning = FALSE}
+hde <- starwars %>% 
+  subset(species == "Human" | species == "Droid" | species == "Ewok")
+
+ggplot(hde, aes(species, mass)) + 
+  geom_boxplot()
+```
+
+### Facetting
+```{r, warning = FALSE}
+hd <- starwars %>% 
+  subset(species == "Human" | species == "Droid")
+hd <- hd %>% 
+  select(name, height, mass, species)
+hd_g <- hd %>% 
+  gather(key = "measurement", value = "value", -name, -species)
+
+ggplot(hd_g, aes(species, value)) + 
+  geom_boxplot() + 
+  facet_grid(~measurement)
+```
+
+### Other
+GGplot is based on the grammar of graphics Plotting data becomes consistent, flexible, specific, complete, and more when using ggplot. 
+
+## SF and  Leaflet
+"Package sf represents simple features as native R objects". In other words, sf is the "geopandas" or "arcpy" of R. It allows the user to manipulate spatial objects within dataframes. Paired with an open source mapping software like leaflet or mapview, the user can create neat maps and visualizations of the spatial data. Or you can simply use the plot() function for a quick view of your data.
+
+### SF Functions
+Here are some of the common functions within the sf package.
+```{r}
+methods(class = "sf")
+```
+
+
+### North Carolina 
+Here we read in the example file of north carolina. 
+
+```{r}
+nc <- st_read(system.file("shape/nc.shp", package="sf"))
+class(nc)
+print(nc[9:15], n = 3)
+```
+```{r}
+par(mar = c(0,0,1,0))
+plot(nc[1], reset = FALSE)  
+```
+
+```{r}
+par(mar = rep(0,4))
+u <- st_union(nc)
+plot(u)
+```
+
+### Leaflet
+```{r}
+leaflet() %>%
+  addTiles() %>%
+  addMarkers(lng=77.1025, lat=28.7041, 
+             popup="Delhi, India")
+```
+
+```{r}
+leaflet(nc) %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(color = "green", popup = paste0(
+    "<b>NAME: </b>", nc$NAME, "<br>",
+    "<b>AREA: <b/>", nc$AREA, "<br>"
+  ))
+```
+
+
+## Shiny
+"Shiny is an R package that enables building interactive web applications that can execute R code on the backend. With Shiny, you can host standalone applications on a webpage, embed interactive charts in R Markdown documents, or build dashboards. You can also extend your Shiny applications with CSS themes, HTML widgets, and JavaScript actions."
+
+Example: https://gpilgrim.shinyapps.io/SwimmingProject-Click/?_ga=2.128768972.1778870320.1676330526-1135307234.1655994064
+
+Example Code: https://github.com/gpilgrim2670/SwimMap/blob/master/app.R
+
+Chris Example: https://christopher-day.shinyapps.io/bus_speeds_viewer/
+
+
+## Bookdown / Quarto
+Bookdown is an open-source R package that can be used to write books, documentation, reports, articles and more with R Markdown. Some of the advantages are:
+
+  - Generate printer-ready books/ebooks
+  - Uses a markup language that's easier to learn than LaTeX
+  - Many output formats (PDF, LaTeX, HTML, EPUB, Word)
+  - Can use interactive graphics
+  - Supports many languages, not just R (like Python)
+  - Can use LaTeX equations
+  - GitHub compatible
+  - RStudio integration
+  - 1 click publishing
+
+Example: https://bookdown.org/rdpeng/rprogdatascience/
