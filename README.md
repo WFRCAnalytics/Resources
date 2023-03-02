@@ -1,8 +1,8 @@
 # Resources
 - GitHub
   - [WFRC GitHub Google Doc](https://docs.google.com/document/d/1t6blGoa8V1jdCKJKd6VHwqqs6fszOxebIP4y0fXem-A/edit)
-  - [WFRC GitLFS] (https://docs.google.com/document/d/1fZrI-wLKLiJchFHom-x_qbhBnSDY8UetN6OFs9U1-Vs/edit)
-  - [Git Long File Paths] (https://docs.google.com/document/d/13kTRlj0UeWKj-NiBlDqnok0E9RhmesLQ0Dn-dS3BBxk/edit#heading=h.2gjb6ihtu1ji)
+  - [WFRC GitLFS](https://docs.google.com/document/d/1fZrI-wLKLiJchFHom-x_qbhBnSDY8UetN6OFs9U1-Vs/edit)
+  - [Git Long File Paths](https://docs.google.com/document/d/13kTRlj0UeWKj-NiBlDqnok0E9RhmesLQ0Dn-dS3BBxk/edit#heading=h.2gjb6ihtu1ji)
 
 - Markdown cheatsheets
   - [Markdown cheat sheet](https://www.markdownguide.org/cheat-sheet/)
