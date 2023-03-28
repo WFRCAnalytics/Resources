@@ -1,0 +1,18 @@
+MODEL_VER,MODE,MODE_LONGNAME,MODE_SHORTNAME
+v9.0,4,Local Bus, LocalBus
+v9.0,5,Core Bus, CoreBus
+v9.0,6,Express Bus, ExpressBus
+v9.0,7,Light Rail Transit, LRT
+v9.0,8,Commuter Rail Transit, CRT
+v9.0,9,Bus Rapid Transit, BRT
+v9.0,11,Auto-Generated Walk Access Link,ModelGen_Walk
+v9.0,12,Hand-Coded Walk Access Link,HandCode_Walk
+v9.0,21,Auto-Generated Transfer Link,ModelGen_Xfers
+v9.0,22,Hand-Coded Transfer Link,HandCode_Xfers
+v9.0,30,KNR to Local Bus+ PNR Link,KNR2local+
+v9.0,40,Drive to Local Bus+ PNR Link,Drive2LocalBus+
+v9.0,50,Drive to Core Bus+ PNR Link,Drive2CoreBus+
+v9.0,60,Drive to Express Bus+ PNR Link,Drive2ExpressBus+
+v9.0,70,Drive to LRT PNR+ Link,Drive2LRT+
+v9.0,80,Drive to CRT PNR+ Link,Drive2CRT+
+v9.0,90,Drive to BRT PNR+ Link,Drive2BRT+

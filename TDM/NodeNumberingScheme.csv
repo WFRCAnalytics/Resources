@@ -1,0 +1,9 @@
+N_FROM,N_TO,MPO,N_GROUP,N_SUBGROUP,N_DESC
+10000,14999,WFRC,Transit,CRT,WFRC CRT Nodes
+15000,19999,WFRC,Transit,LRT,WFRC LRT Nodes
+20000,24999,WFRC,Highway,Freeway,WFRC Freeway Nodes (ordered by route south to north and west to east)
+25000,49999,WFRC,Highway,Other,WFRC Remaining Nodes (ordered south to north)
+50000,54999,MAG,Transit,CRT,MAG CRT Nodes
+55000,59999,MAG,Transit,LRT,MAG LRT Nodes
+60000,64999,MAG,Highway,Freeway,MAG Freeway Nodes (ordered by route south to north and west to east)
+65000,89999,MAG,Highway,Other,MAG Remaining Nodes (ordered south to north)
