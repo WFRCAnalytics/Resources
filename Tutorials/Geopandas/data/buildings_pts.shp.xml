@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en"><Esri><CreaDate>20230313</CreaDate><CreaTime>18462900</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="c:\program files\arcgis\pro\Resources\ArcToolbox\Toolboxes\Data Management Tools.tbx\Rename" Date="20230313" Time="184629">Rename E:\Tasks\TSB_Talk\data\buildings_pts2.shp E:\Tasks\TSB_Talk\data\buildings_pts.shp ShapeFile</Process></lineage></DataProperties></Esri></metadata>
