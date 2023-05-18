@@ -7,7 +7,7 @@ import os
 # get client based  on current username
 def getBigQueryClient_TDMScenarios(): 
 
-    if os.getlogin()=='Cday':
+    if os.getlogin()=='cday':
         key_path = r"C:\Users\cday\tdm-scenarios-c90ba30c3c5d.json"
     elif os.getlogin()=='bhereth':
         key_path = r"C:\Users\bhereth\tdm-scenarios-a85044dbbfd3.json"

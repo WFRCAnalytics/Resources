@@ -1,0 +1,155 @@
+---
+title: "SF Demo"
+output: html_document
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+To prevent any migraines, it's best to use R within RStudio and use separately from Python. Although you can use both within the same notebook/RMarkdown, its kinda annoying.
+
+- Use install.packages('sf') to install
+
+It's also useful to have tidyverse installed in case you want to do some data wrangling before mapping your spatial data.
+
+```{r}
+library(tidyverse)
+library(sf)
+library(leaflet)
+library(mapview)
+```
+
+## Reading in data
+```{r}
+buildings_sdf = st_read("data/buildings_pts.shp")
+tibble(buildings_sdf)
+```
+
+## Static Mapping
+```{r}
+ggplot(buildings_sdf)+
+  geom_sf(aes(color = btype), size = 2) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+# Buffer Example
+```{r}
+bus_lanes_sdf = st_read('data/wb_LocalBus.shp')
+tibble(bus_lanes_sdf)
+```
+
+```{r}
+# check the coordinate reference system units (meters)
+st_crs(bus_lanes_sdf)
+```
+
+```{r}
+ggplot(bus_lanes_sdf)+
+  geom_sf(aes(color =v832_SE_37), size = 2) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+```{r}
+# Filter buslanes to Weber COunt and plot
+bus_lanes_weber <- bus_lanes_sdf %>%
+  filter(v832_SE_37 == 'WEBER')
+
+ggplot(bus_lanes_weber) +
+  geom_sf(aes(color = 'red')) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + 
+  theme(legend.position="none")
+```
+
+```{r}
+meters_to_buffer <-  .4 * 1609.344
+buffered_lanes = st_buffer(bus_lanes_weber, meters_to_buffer)
+```
+
+```{r}
+ggplot() +
+  geom_sf(data = buffered_lanes, aes(color = 'red')) +
+  geom_sf(data = bus_lanes_weber, aes(color = 'blue')) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + 
+  theme(legend.position="none")
+```
+
+# Spatial Join Examples
+```{r}
+weber_cities_sdf = st_read('data/weber_cities.shp')
+ggplot(weber_cities_sdf) +
+  geom_sf(aes(fill = NAME)) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+```{r}
+# Join Cities attributes to the buildings points
+cities_buildings_join = st_join(weber_cities_sdf, buildings_sdf, join = st_intersects)
+```
+
+```{r}
+cb_agg = cities_buildings_join %>%
+  group_by(NAME) %>%
+  summarize(res_units = sum(res_units), job_spaces = sum(job_spaces))
+tibble(cb_agg)
+```
+```{r}
+cb_centroids = st_centroid(cb_agg)
+cb_centroids_coords = st_coordinates(cb_centroids)
+cb_centroids2 = cb_centroids %>%
+  mutate(x = cb_centroids_coords[,1], y = cb_centroids_coords[,2])
+ggplot(cb_agg) +
+  geom_sf(aes(fill = NAME)) +
+  geom_text(data = cb_centroids2, aes(x, y, label = NAME), colour = "white", size = 2) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+## TDM Example: Join Link Midpoints with Toll zones with Spatial join
+
+```{r}
+# read in data
+out_link_mp <- st_read('data/C1_Link_Midponts.shp')
+tollz_shp <- st_read('data/Tollz_shp.shp')
+```
+
+```{r}
+mp_tollz = st_join(out_link_mp, tollz_shp, join = st_within, left = FALSE)
+tibble(mp_tollz)
+```
+```{r}
+# write the result to shapefile
+#st_write(mp_tollz, 'Outputs/r_mp_tollz.shp')
+```
+
+# Interactive Maps
+```{r}
+weber_cities_leaflet <- weber_cities_sdf %>%
+  st_transform(4326) %>%
+  mutate(col=sample(c('red','yellow','green','blue','orange','brown','purple'),nrow(weber_cities_sdf),1))
+```
+
+```{r}
+leaflet(weber_cities_leaflet) %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(
+    data = weber_cities_leaflet,
+    co = "black", 
+    fillColor = weber_cities_leaflet$col,
+    highlightOptions = highlightOptions( color='red', weight=4, bringToFront = TRUE),
+    popup = paste0(
+      "<b>NAME: </b>", weber_cities_leaflet$NAME, "<br>",
+      "<b>AREA: <b/>", weber_cities_leaflet$AREA, "<br>"
+  ))
+```
+
+
+```{r}
+mapview(weber_cities_leaflet, zcol = "NAME")
+```
+
+
+
+
+
+
+
+
