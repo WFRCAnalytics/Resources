@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  width: 100%;
+}
+
+.SScontainer1ET {
+  border: none;
+  display: inline-block;
+  vertical-align: top;
+  width: 700px;
+}
+
+.SScontainer2ET {
+  border: none;
+  display: inline-block;
+  vertical-align: top;
+  width: 700px;
+}
+
+#map,
+#map2 {
+  height: 750px;
+  width: 100%;
+}
