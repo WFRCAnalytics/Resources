@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "streetlight-temp-analysis",
+  "private_key_id": "1374f860ac96fcf5121ef985bf06546b8f77e380",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDDI07DBrqgcmNZ\n830zbPXYUtfvXlmLa8gP5j/ttp/vUUENYY/9HLOJFdnjP4FdrXeteX1JzCjAAZy4\nZEPBLqLc1zR2EMmVo8b1i1CdZ6YubAMNlFmw13KBkdYJpPvB0tvivJUSDPqIPx0A\n3quSHoMICxIL3lZw91NKe6xdTgYzeEjPhI6IMkcEa/YnMnxn/6mtANVRdrOuVk/b\nzIfHrP91hZuZxqq8PalRlOlAAM3MQKBjLLefgZFkMNHZ0mkC6w9F20+05mHthbB4\nO4rXIY0CxT960XvypY4542aFK5ioOz+D1x3Rghkvlvtk03UHbjq6ExVacVJIuouq\noVpnEUGpAgMBAAECggEAFjIpbtCQoNhyCZTDHHrb2e/OZQlP2SZ42qofgmv/9CpD\nYoDC7pD5sPGd15XtIpktIDvN7vt8dR6Z03WAKXSjDMijzHwrWcyHwH1IvabBBc2+\naSiDLTTMbwWGGZG9GzZfUYKO2D9GrgGzzFoHnPbAg8Uyl8wB/BZ90F6R5AkQdoEY\nuldaVkbIFHX6P4/Xixr8NlPSwyABZUoqJSLYNK5htlnoNuQPRrR2nCpZ/HlANw65\nYKlgJINaldXakdAzcx6AO8IC+R89/p+9XpfPFDRDTQS+Xn0IUbM70zLdLm2NdT/o\n0qpQpz1XptFOWXh4fO7KKKk3F8BTZBlkq06KqX7mQwKBgQDgV44Vp/+vPvKNSZEj\ntmlVT0swPgSgePyoOfDjjGKhJFwpiCI7D0LcgXChhuQxv8+wWFl5Wzy2gmNJue82\nvIdaOQXfUdmXt2YG52EFA76OqV+F2UgLfeK88wBI932dgnzI2Ocqi3SygqZs3XE8\n4JxQJsXeA4IKkl5mbYm0Dv9AjwKBgQDerL4/rN6zeg7XGeWUamnCpMLhZh0uhF5L\nDc+2lhqjHNIyxFjTyi3Wj8loKjDUkHyq5jVQBm/Y72via5WcCUwem4g7IrQU0sPi\nbJmPQIerl+FpF4D/cmO94E1WnoiJDdRe/JAOsY8hZyRFAtBWW8PrPys582GHrSEj\nIw3dDI0GRwKBgQCGvc+GzkpRNRt1JJRZwLtvE5rzNKyOvVvypio6YRzz7+SyxSLa\nGgZsbgn52gzAnJXfMpE6xEOo0pNTuqskUwNwewM95+kqqGpNBzdMTb1r7eqDd8c/\nr7I5DjJDoPH/YloUP8JH2U6T0MioZjAXAkigE0mQWMcIFnVAS9YDIWbJnQKBgBZN\nbvCpu9R2ES5yJZBr6BPatLompB2YnGkgBQHgnuJfbJ4xFESCJ30qAZ4xO5rOre3g\nCM7vFhzAPin7ZIywUbNvGIHzw92iDoSLJAY5DF2fZLBF7mGnb14BLT3TuxEfFXo+\nCZ+vIQrTbcqLsZo0rrbNKOMxAT+5k2wVgrn1G9rZAoGBAKuicwffl2TNFobAQ1wF\nwDTkU1s0bmsZibJS32GxjTD9u984lUx5liIr/Fwoliw0VMly6k4DP1R6dfxwIWlb\n20TZe4yZYQSvpYzvJLFaC9IplEmp1LdVcBBR2kR/RjashHoc8Bp0us7bBBTc/p2E\nYEeafwKxImhe7ROS3r1+VfBt\n-----END PRIVATE KEY-----\n",
+  "client_email": "google-sheets@streetlight-temp-analysis.iam.gserviceaccount.com",
+  "client_id": "103413843524064801641",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/google-sheets%40streetlight-temp-analysis.iam.gserviceaccount.com"
+}

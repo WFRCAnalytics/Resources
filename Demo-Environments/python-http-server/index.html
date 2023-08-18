@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="description" content="Canvas Flowmap Layer with LeafletJS." />
+
+        <title>Basic Layer with LeafletJS</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+
+        <div><h1>Chart JS - Dynamic Chart and Select Widget</h1></div>
+            <div>
+                <select id="chartType">
+                    <option value="bar">Bar Chart</option>
+                    <option value="line">Line Chart</option>
+                    <option value="pie">Pie Chart</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="SScontainer1ET" style="border: none;">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <div><h1>Read JSON and Populate Select Widget</h1></div>
+
+        <select id="myDropdown"></select>   
+
+        <div><h1>Leaflet Map</h1></div>
+
+        <div class="SScontainer1ET" style="border: none;">
+            <div id="map"></div>
+        </div>
+
+        <!-- first load LeafletJS -->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+        <!-- load Esri Leaflet because we want to use an Esri basemap -->
+        <script src="https://unpkg.com/esri-leaflet@3.0.0/dist/esri-leaflet.js"></script>
+        
+        <!-- load chart.js-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script src="index.js"></script>
+
+    </body>
+
+</html>
