@@ -54,7 +54,7 @@ require([
     map.add(geojsonSegments);
 
 
-    // LISTENERS FOR USING WIDGETS
+    // LISTENERS FOR USING SEGMENTS WIDGETS
 
     // add listener to update renderer based on selection change
     document.getElementById("selectAadtYear").addEventListener("calciteSelectChange", function(event) {
@@ -81,12 +81,9 @@ require([
     
     // ADD CSV LAYER
 
-    // URL of the CSV file (change this to your CSV file's location)
-    const url = "data/random-spots.csv";
-
     // Create the CSVLayer and specify its properties
     const csvRandomSpots = new CSVLayer({
-        url: url,
+        url: "data/random-spots.csv",
         title: "Random Spots",
         latitudeField: "lat",  // Change these based on your CSV column names
         longitudeField: "lon",
