@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map to the Future: ArcGIS Awakens</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.27/esri/themes/light/main.css">
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.8.0/calcite.css" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://js.arcgis.com/4.27/"></script>
+    <script type="module" src="https://js.arcgis.com/calcite-components/1.8.0/calcite.esm.js"></script>
+    <script src="scripts.js"></script>
+</head>
+<body>
+    <header>
+        <h2>Map to the Future: ArcGIS Awakens</h2>
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Roadway Segments</h3>
+            <calcite-select id="selectAadtYear">
+                <calcite-option value="AADT2021">AADT 2021</calcite-option>
+                <calcite-option value="AADT2011">AADT 2011</calcite-option>
+                <calcite-option value="AADT2001">AADT 2001</calcite-option>
+                <calcite-option value="AADT1991">AADT 1991</calcite-option>
+                <calcite-option value="AADT1981">AADT 1981</calcite-option>
+            </calcite-select>
+            <br/>
+            <label for="checkboxSegments">
+                <calcite-checkbox id="checkboxSegments"></calcite-checkbox>
+                Hide Layer
+            </label>
+        </aside>
+        <main>
+            <div id="viewDiv"></div>
+        </main>
+    </div>
+</body>
+</html>
