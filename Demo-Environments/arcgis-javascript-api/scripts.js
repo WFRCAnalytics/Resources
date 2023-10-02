@@ -1,5 +1,3 @@
-let legend;
-
 require([
     "esri/Map",
     "esri/views/MapView",
@@ -131,12 +129,12 @@ require([
     map.add(csvRandomSpots);
 
     // CREATE LEGEND WIDGET
-    legend = new Legend({
+    const legend = new Legend({
         view: view,
         layerInfos: [
-                      { layer: csvRandomSpots , title: 'Random Spots' },
-                      { layer: layerLrtStops  , title: 'LRT Stops'    },
-                      { layer: geojsonSegments, title: 'Segments'     }
+                      { layer: csvRandomSpots , title: 'Random Spots - CSV Layer' },
+                      { layer: layerLrtStops  , title: 'LRT Stops - AGOL Layer'   },
+                      { layer: geojsonSegments, title: 'Segments - GeoJSON Layer' }
                     ]
     });
     view.ui.add(legend, "top-right");
