@@ -5,12 +5,13 @@ require([
     "esri/views/MapView",
     "esri/layers/GeoJSONLayer",
     "esri/layers/CSVLayer",
+    "esri/layers/FeatureLayer",
     "esri/symbols/SimpleLineSymbol",
     "esri/symbols/SimpleMarkerSymbol",
     "esri/Color",
     "esri/renderers/ClassBreaksRenderer",
     "esri/widgets/Legend"
-], function(Map, MapView, GeoJSONLayer, CSVLayer, SimpleLineSymbol, SimpleMarkerSymbol, Color, ClassBreaksRenderer, Legend) {
+], function(Map, MapView, GeoJSONLayer, CSVLayer, FeatureLayer, SimpleLineSymbol, SimpleMarkerSymbol, Color, ClassBreaksRenderer, Legend) {
 
 
     // CREATE MAP
@@ -79,6 +80,15 @@ require([
     });
     
     
+    // Add FeatureLayer
+
+    layerLrtStops = new FeatureLayer({
+        url: "https://services1.arcgis.com/taguadKoI1XFwivx/arcgis/rest/services/Housing_ATO_WFL1/FeatureServer/352"
+    });
+
+    map.add(layerLrtStops);
+
+
     // ADD CSV LAYER
 
     // Create the CSVLayer and specify its properties
@@ -120,12 +130,12 @@ require([
     // Add the CSVLayer to the map
     map.add(csvRandomSpots);
 
-
     // CREATE LEGEND WIDGET
     legend = new Legend({
         view: view,
         layerInfos: [
                       { layer: csvRandomSpots , title: 'Random Spots' },
+                      { layer: layerLrtStops  , title: 'LRT Stops'    },
                       { layer: geojsonSegments, title: 'Segments'     }
                     ]
     });
