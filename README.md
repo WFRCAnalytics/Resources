@@ -19,3 +19,9 @@
 
 - Debugging Helps
   - [Git Long File Paths](https://docs.google.com/document/d/13kTRlj0UeWKj-NiBlDqnok0E9RhmesLQ0Dn-dS3BBxk/edit#heading=h.2gjb6ihtu1ji)
+
+- GitHub for Planners
+  - https://www.youtube.com/watch?v=gVa4d728T0k
+ 
+- Cube Voyager Tips and Tricks wiki!!
+  - https://github.com/WFRCAnalytics/Resources/wiki/Cube-Voyager-Tips-and-Tricks#f168-string-variable-required
