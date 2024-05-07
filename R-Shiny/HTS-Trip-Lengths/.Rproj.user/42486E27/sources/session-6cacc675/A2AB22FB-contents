@@ -1,4 +1,5 @@
 library(shinydashboard)
+library(shinyalert)  # Include shinyalert library
 library(tidyverse)  # Not actually used in this script, could be removed if not used elsewhere
 library(bslib)  # For theming, ensure its use or remove if unnecessary
 library(ggplot2)
@@ -48,6 +49,19 @@ ui <- dashboardPage(
 )
 
 server <- function(input, output) {
+  
+  useShinyalert()  # Initialize shinyalert
+  
+  # Display the alert when the app is opened
+  shinyalert(
+    text = "The 2023 Utah Moves household travel survey was designed and conducted for use in regional and statewide travel demand modeling.  The sample size and frame is suitable for that purpose.
+    \n Proper application of the dataset and use of this application is the responsibility of the user. In using the information or data herein, users assume the risk for relying on such data or information, and further agree to hold Utah's transportation agencies harmless for all liability of any nature resulting from the lack of accuracy or correctness of the information or data, or uses of the information or data. The user acknowledges that the use of this information or data may be subject to error and omission, and the accuracy of the information provided is not guaranteed or represented to be true, complete, nor correct. 
+    \n Users are encouraged to contact analytics@wfrc.org with questions or to discuss proper uses and application of this data.",
+    closeOnClickOutside = FALSE,
+    closeOnEsc = FALSE,
+    confirmButtonText = "I acknowledge and agree",
+    size="m"
+  )
   
   observe({
     # Convert inputs to numeric to avoid non-numeric errors
