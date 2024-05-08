@@ -1,0 +1,10 @@
+value,label
+-1,All
+1,Home-based work
+2,Home-based school
+3,Home-based shopping
+4,Home-based personal business
+5,Home-based other
+6,Non-home-based work
+7,Non-home-based non-work
+995,Missing response

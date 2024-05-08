@@ -1,0 +1,27 @@
+{
+    "id": "764D93F0",
+    "path": "E:/GitHub/Resources/R-Shiny/2023-utah-household-travel-survey-trip-length-distribution/app.R",
+    "project_path": "app.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1715205018814.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "286,70",
+        "scrollLine": "281"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1715205140,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1715205140981,
+    "read_only": false,
+    "read_only_alternatives": []
+}

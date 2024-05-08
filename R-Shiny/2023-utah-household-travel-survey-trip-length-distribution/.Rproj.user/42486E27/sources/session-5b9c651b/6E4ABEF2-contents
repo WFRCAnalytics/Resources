@@ -1,0 +1,7 @@
+data <- read_csv("input/hts-trip-lengths.csv")
+labelsModeTypeBroad <- read_csv("input/mode_type_broad_labels.csv")
+labelsNumVehicles <- read_csv("input/num_vehicles_labels.csv")
+labelsNumWorkers <- read_csv("input/num_workers_labels.csv")
+labelsTripType <- read_csv("input/trip_type_labels.csv")
+labelsBinSizes <- read_csv("input/bin_sizes_labels.csv")
+labelsSampleSegmentGroups <- read_csv("input/sample_segment_groups.csv")
