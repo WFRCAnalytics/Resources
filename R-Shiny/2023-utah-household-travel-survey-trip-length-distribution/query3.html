@@ -1,0 +1,40 @@
+<pre style="background-color: #f5f5f5; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-family: monospace;">
+  <code>
+    SELECT
+      bins.binSize,
+      bins.binStart,
+      gSs.groupSampleSegmentLabel,
+      gNw.groupNumWorkers,
+      gNv.groupNumVehicles,
+      gTt.groupTripType,
+      gMtb.groupModeTypeBroad,
+      COUNT(*) as numTripRecords,
+      SUM(trip.trip_weight) AS sumTripWeight
+    FROM
+      `confidential-2023-utah-hts.20230313._vDistanceBinsBySize` as bins,
+      `confidential-2023-utah-hts.20230313.hh` as hh,
+      `confidential-2023-utah-hts.20230313.trip` as trip,
+      `confidential-2023-utah-hts.groupings.groupSampleSegment` as gSs,
+      `confidential-2023-utah-hts.groupings.groupNumWorkers` as gNw,
+      `confidential-2023-utah-hts.groupings.groupNumVehicles` as gNv,
+      `confidential-2023-utah-hts.groupings.groupModeTypeBroad` as gMtb,
+      `confidential-2023-utah-hts.groupings.groupTripType` as gTt
+    WHERE
+      trip.distance_miles &gt;= bins.binStart AND
+      trip.distance_miles &lt; bins.binStart + bins.binSize AND
+      hh.sample_segment = gSs.sample_segment AND
+      hh.hh_id = trip.hh_id AND
+      hh.num_workers = gNw.num_workers AND
+      hh.num_vehicles = gNv.num_vehicles AND
+      trip.trip_type = gTt.trip_type AND
+      trip.mode_type_broad = gMtb.mode_type_broad
+    GROUP BY
+      bins.binSize,
+      bins.binStart,
+      gSs.groupSampleSegmentLabel,
+      gNw.groupNumWorkers,
+      gNv.groupNumVehicles,
+      gTt.groupTripType,
+      gMtb.groupModeTypeBroad
+  </code>
+</pre>

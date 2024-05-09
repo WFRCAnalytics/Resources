@@ -1,0 +1,38 @@
+<pre style="background-color: #f5f5f5; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-family: monospace;">
+  <code>
+    -- Generate a series of numbers from 0 to 995, incrementing by 5
+    -- List will be filtered below by MOD function for respective bin-size
+    WITH NumberSeries AS (
+      SELECT num
+      FROM UNNEST(GENERATE_ARRAY(0, 995, 5)) AS num
+    )
+
+    -- Half-mile bin size
+    SELECT
+      0.5 AS binSize,
+      num / 10.0 AS binStart
+    FROM NumberSeries
+    WHERE MOD(num, 5) = 0 AND num / 10.0 < 100
+
+    UNION ALL
+
+    -- 1-mile bin size
+    SELECT
+      1.0 AS binSize,
+      num / 10.0 AS binStart
+    FROM NumberSeries
+    WHERE MOD(num, 10) = 0 AND num / 10.0 < 100
+
+    UNION ALL
+
+    -- 5-mile bin size
+    SELECT
+      5.0 AS binSize,
+      num / 10.0 AS binStart
+    FROM NumberSeries
+    WHERE MOD(num, 50) = 0 AND num / 10.0 < 100
+
+    ORDER BY
+      binSize, binStart;
+  </code>
+</pre>

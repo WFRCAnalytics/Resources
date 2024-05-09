@@ -4,10 +4,4 @@ labelsNumVehicles <- read_csv("input/num_vehicles_labels.csv")
 labelsNumWorkers <- read_csv("input/num_workers_labels.csv")
 labelsTripType <- read_csv("input/trip_type_labels.csv")
 labelsBinSizes <- read_csv("input/bin_sizes_labels.csv")
-
-segmentgroups <- read_csv("input/sample_segment_groups.csv")
-
-labelsSampleSegmentGroups <- segmentgroups %>%
-  filter(geoType == 'samplesegment')
-labelsAreaInterest <- segmentgroups %>%
-  filter(geoType == 'interestarea')
+labelsSampleSegmentGroups <- read_csv("input/sample_segment_groups.csv")

@@ -1,0 +1,35 @@
+<pre style="background-color: #f5f5f5; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-family: monospace;">
+  <code>
+    --Each individual value is given its own groupNumVehicles value equivalent
+    --to its num_vehicles attribute value
+    
+    SELECT
+      CAST(value AS INT64) AS num_vehicles,
+      CAST(value AS INT64) AS groupNumVehicles,
+      label AS groupNumVehiclesLabel
+    FROM
+      `confidential-2023-utah-hts.20230313.value_labels`
+    WHERE
+      table = "hh" AND 
+      variable = "num_vehicles"
+    
+    UNION ALL
+    
+    --An ALL group is added with each num_vehicles attribute value as a record
+    --and a common groupNumVehicles value of -1 (to not overlap with values
+    --created from existing num_vehicles attribute values above)
+    
+    SELECT
+      CAST(value AS INT64) AS num_workers,
+      -1 AS groupNumVehicles,
+      "All Number of Vehicles" AS groupNumVehiclesLabel
+    FROM
+      `confidential-2023-utah-hts.20230313.value_labels`
+    WHERE
+      table = "hh" AND 
+      variable = "num_vehicles"
+    
+    ORDER BY
+      groupNumVehicles, num_vehicles
+  </code>
+</pre>
