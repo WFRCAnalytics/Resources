@@ -1,13 +1,14 @@
-value,label
-All,All
-Box Elder - Tooele - Juab,Box Elder - Tooele - Juab
-Cache,Cache
-Davis,Davis
-Iron,Iron
-Morgan - Summit - Wasatch,Morgan - Summit - Wasatch
-Salt Lake,Salt Lake
-Utah,Utah
-Washington,Washington
-Weber,Weber
-All other counties,All other counties
-University,University
+value,label,geoType
+TT,All,samplesegment
+Bo,Box Elder - Tooele - Juab,samplesegment
+Ca, Cache,samplesegment
+Da,Davis,samplesegment
+Ir,Iron,samplesegment
+Mo,Morgan - Summit - Wasatch,samplesegment
+Sa,Salt Lake,samplesegment
+Ut,Utah,samplesegment
+Wa,Washington,samplesegment
+We,Weber,samplesegment
+Al,All other counties,samplesegment
+Un,University,samplesegment
+WF, Wasatch Front Urban Counties (We/Da/SL/Ut), interestarea

@@ -1,0 +1,21 @@
+---
+title: "Debug"
+author: "William Richard Hereth Jr"
+date: "2024-05-08"
+output: html_document
+---
+
+```{r}
+
+data <- read_csv("input/hts-trip-lengths.csv")
+
+data2 <- data%>%
+  filter(groupSampleSegment == "TT",
+         groupNumWorkers == -1,
+         groupNumVehicles == -1,
+         groupTripType == -1,
+         groupModeTypeBroad == 1,
+         binSize == 0.5)
+
+```
+
