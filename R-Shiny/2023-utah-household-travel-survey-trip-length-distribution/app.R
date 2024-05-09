@@ -102,7 +102,8 @@ server <- function(input, output, session) {
   observeEvent(input$showMethodology, {
     showModal(modalDialog(
       title = "Methodology",
-      tags$p("The trip-lengths described in this app are from the trip distance as recorded in the Household Travel Survey trip table. Trip distances greater than 100 miles were filtered out of this dataset. Distributions were calculated using the following steps:"),
+      tags$p("The trip lengths described in this app are from the trip distances as reported in the Household Travel Survey's cleaned, weighted trip table delivered by RSG, the contractor for the survey project. The dataset has not been further post-processed with the exception that trips with a length longer than 100 miles have been excluded from this application/analysis."),
+      tags$p("Trip length distributions were calculated using the following steps:"),
       tags$p(tags$b("Prepare distance bins")),
       tags$p("A view was created that contains starting bin values for bin sizes of 1/2 mile, 1 mile and 5 miles from 0 to 100 using QUERY 1."),
       tags$p(tags$b("Prepare grouping tables")),
