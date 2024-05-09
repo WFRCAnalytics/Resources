@@ -106,7 +106,7 @@ server <- function(input, output, session) {
       tags$p(tags$b("Prepare main query")),
       tags$p("The main query was created using the household table and the trip table joined on the hh_id field. The view for distance bins is included with a condition that the trip.distance_miles is greater than or equal to the binStart value and less than binStart + binSize. The five views for groupings are also added by using key values to link the tables. The trip_weight and number of records is aggregated for each combination of bin size and key dimension using their respective group fields. Resulting record counts in the numTripRecords field were used to judge rough accuracy of the query structure. See QUERY 3."),
       tags$p(tags$b("Calculate histogram distribution and cumulative distribution")),
-      tags$p("A jupyter notebook was used to calculate a histogram (percentage) distribution and cumulative distribution for each combination of bin size and key dimension. The notebook can be found in this repo: https://github.com/WFRCAnalytics/Resources/tree/master/R-Shiny/HTS-Trip-Lengths/dataprep"),
+      tags$p("A jupyter notebook was used to calculate a histogram (percentage) distribution and cumulative distribution for each combination of bin size and key dimension. The notebook can be found in this repo: https://github.com/WFRCAnalytics/Resources/blob/master/R-Shiny/2023-utah-household-travel-survey-trip-length-distribution/dataprep/trip-distance-distribution.ipynb"),
       
       tags$h4("QUERY 1"),
       tags$p(
