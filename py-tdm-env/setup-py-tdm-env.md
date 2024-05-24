@@ -12,7 +12,7 @@ If you don't have Visual Studio Code, download it [here](https://code.visualstud
 
 **Step 3: Download Python and Jupyter Extensions**
 
-After open Visual Studio, ensure that the `Python` and `Jupyter` extensions are downloaded. You can do this by navigating to `Extensions` window or pressing `Ctrl+Shift+X`. Next search for `Python` and `Jupyter` extensions and download them. 
+After opening Visual Studio, ensure that the `Python` and `Jupyter` extensions are downloaded. You can do this by navigating to the `Extensions` window or pressing `Ctrl+Shift+X`. Next search for the `Python` and `Jupyter` extensions and install them. 
 
 **Step 4: Refresh Visual Studio**
 
@@ -41,9 +41,9 @@ After creating the new kernel spec, reload Visual Studio (*See Step 4*).
 
 **Step 7: Select py-tdm-env Kernel**
 
-The new environment should be automatically selected. If its not automatically selected, select the newly created kernel from the kernel selection box (top-right corner) with `Select Kernel/Jupyter Kernel../py-tdm-env`. Alternatively, you may also select the Python environment from the kernel selection box (top-right corner) with `Select Kernel/Python Environments../py-tdm-env`. Both should allow you to run cells in a Jupyter Notebook file.
+The new environment should be automatically selected. If its not selected, select the newly created kernel from the kernel selection box (top-right corner) with `Select Kernel/Jupyter Kernel../py-tdm-env`. Alternatively, you may also select the Python environment from the kernel selection box (top-right corner) with `Select Kernel/Python Environments../py-tdm-env`. Both should allow you to run cells in a Jupyter Notebook file.
 
-In general, whenever you run a Jupyter Notebook file (.ipynb) you will need to select a kernel from the `Select Kernel` menu option. Fortunately, once you add a kernel spec that kernel is stored in the picklist for future uses. Therefore, whenever you open or reopen a .ipynb in Visual Studio, the `py-tdm-env` should always be available to select. This also means you are able to download different Python environments and add additional kernel specs to the picklist. 
+In general, whenever you run a Jupyter Notebook file (.ipynb) you will need to select a kernel from the `Select Kernel` menu option. Fortunately, once you add a kernel spec that kernel is stored in the picklist for future uses. Therefore, whenever you open or reopen a .ipynb in Visual Studio, the `py-tdm-env` should always be available to select. Note that you also have the capability to download different Python environments and add additional kernel specs to the picklist. 
 
 *Note: The `Select Kernel` option only shows when a Jupyter notebook file is open.*
 
