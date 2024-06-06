@@ -1,0 +1,13 @@
+pandas
+geopandas
+shapely
+numpy
+dbfread
+openpyxl
+jupyter
+ipykernel
+importlib
+json
+matplotlib
+python-docx
+folium
