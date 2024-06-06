@@ -1,13 +1,11 @@
-pandas
-geopandas
-shapely
-numpy
-dbfread
-openpyxl
 jupyter
 ipykernel
-importlib
-json
+pandas (numpy)
+geopandas (shapely)
 matplotlib
-python-docx
 folium
+importlib
+dbfread
+openpyxl
+python-docx
+json
