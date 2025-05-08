@@ -1,0 +1,128 @@
+---
+title: "Large District Photo Viewer"
+author: "Chris Day"
+date: "2023-09-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+library(exiftoolr) # you must install Exiftool to use this pacakge
+library(leaflet)
+library(htmlwidgets)
+library(magick)
+library(leaflet)
+library(leafpop)
+library(sf)
+library(tidyverse)
+```
+
+## Set HEIC Photo Path
+```{r}
+photo_folder_path <- "D:/GitHub/Large-District-Tours/photos/1-southwest-saltlake"
+```
+
+## Data prep (convert heic to jpg & rename files)
+
+```{r}
+#function that converts HEIC type photos to JPG
+convert_heic_to_jpg <- function(photo_folder_path) {
+  heic_files <- list.files(photo_folder_path, pattern = "\\.heic$", full.names = TRUE, ignore.case = TRUE)
+  
+  counter <- 0
+  for (heic_file in heic_files) {
+    jpg_file <- file.path(photo_folder_path, sprintf("%02d.jpg", counter))
+    img <- image_read(heic_file)
+    image_write(img, jpg_file, format = "jpg")
+    file.rename(heic_file, file.path(photo_folder_path, sprintf("%02d.heic", counter)))
+    counter <- counter + 1
+  }
+}
+
+#function that delete .heic photos
+delete_heic_files <- function(folder_path) {
+  files <- list.files(path = folder_path, full.names = TRUE)
+
+  heic_files <- files[grep("\\.heic$", files, ignore.case = TRUE)]
+  if (length(heic_files) > 0) {
+    file.remove(heic_files)
+    cat(paste(length(heic_files), "HEIC file(s) deleted.\n"))
+  } else {
+    cat("No HEIC files found in the specified folder.\n")
+  }
+}
+```
+
+```{r}
+#convert_heic_to_jpg(photo_folder_path)
+#delete_heic_files(photo_folder_path)
+```
+
+## Function that extracts lat/lon metadata
+```{r}
+# Function to extract latitude and longitude from a photo
+get_lat_lon <- function(file_path) {
+  metadata <- exif_read(file_path)
+  lat <- metadata$GPSLatitude
+  lon <- metadata$GPSLongitude
+    return(c(lat, lon))
+}
+```
+
+## Read HEIC photos, extract coordinates, and match to jpg file
+
+```{r}
+# Read HEIC photos, extract coordinates, and store in data_list
+data_list <- list()
+
+counter <- 0
+for (file_name in list.files(photo_folder_path, pattern = "\\.heic$", full.names = TRUE)) {
+  coords <- get_lat_lon(file_name)
+  jpg_file <- file.path(photo_folder_path, sprintf("%02d.jpg", counter))
+  counter <- counter + 1
+  if (!is.null(coords)) {
+    data_list[[length(data_list) + 1]] <- list(
+      lat = coords[1],
+      lon = coords[2],
+      photo_path = jpg_file
+    )
+  }
+  if (is.null(coords)) {cat("No coords\n")}
+}
+```
+
+
+## Create Map of Points with Photos
+
+```{r}
+# read in points of interest
+interest_points <- "points-of-interest/1-southwest-saltlake/points_of_interest.shp"
+sf_interest_points <- st_read(interest_points) %>%
+  st_as_sf() %>%
+  st_transform(4326)
+```
+
+
+```{r}
+data_table <- bind_rows(data_list)
+sf_data_table <- data_table %>%
+  mutate(img = photo_path) %>%
+  select(-photo_path) %>%
+  st_as_sf(coords = c('lon','lat'), crs=4326)
+```
+
+```{r}
+map <- leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(data = sf_data_table, group = "sf_data_table") %>%
+  addPopupImages(sf_data_table$img, group = "sf_data_table", width = 300)
+map <- map %>%
+  addMarkers(data = sf_interest_points, group = "Red Points", popup  = ~Note)
+
+map
+
+htmlwidgets::saveWidget(map, "1-southwest-saltlake.html", selfcontained = TRUE)
+```
