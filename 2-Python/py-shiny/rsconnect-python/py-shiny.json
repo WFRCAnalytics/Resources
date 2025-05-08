@@ -1,0 +1,12 @@
+{
+    "https://api.shinyapps.io": {
+        "server_url": "https://api.shinyapps.io",
+        "filename": "E:\\GitHub\\Resources\\2-Python\\py-shiny",
+        "app_url": "https://wfrc.shinyapps.io/py-shiny/",
+        "app_id": 14239035,
+        "app_guid": null,
+        "title": "py-shiny",
+        "app_mode": "python-shiny",
+        "app_store_version": 1
+    }
+}
