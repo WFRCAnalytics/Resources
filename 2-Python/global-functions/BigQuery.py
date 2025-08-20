@@ -46,17 +46,19 @@ def getBigQueryClient_StreetLight():
 # get client based  on current username
 def getBigQueryClient_Confidential2023UtahHTS(): 
 
+    print (os.getlogin())
+
     if os.getlogin()=='Cday' or os.getlogin() =='cday':
         key_path = r"C:\Users\cday\confidential-2023-utah-hts-e7f78b32b806.json"
     elif os.getlogin()=='bhereth': 
-        key_path = r""
+        key_path = r"C:\Users\bhereth\confidential-2023-utah-hts-db5335615978.json"
     # add mac user name
-    elif os.environ['USER']=='William': 
-        key_path = os.path.expanduser("")
     elif os.getlogin()=='sswim':
         key_path = r""
     credentials = service_account.Credentials.from_service_account_file(
         filename = key_path, scopes=["https://www.googleapis.com/auth/cloud-platform"],
     )
+
+    print (key_path)
     
     return bigquery.Client(credentials=credentials, project=credentials.project_id,)
