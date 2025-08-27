@@ -62,3 +62,21 @@ def getBigQueryClient_Confidential2023UtahHTS():
     print (key_path)
     
     return bigquery.Client(credentials=credentials, project=credentials.project_id,)
+
+
+# get client based  on current username
+def getBigQueryClient_WfrcData(): 
+
+    print (os.getlogin())
+
+    if os.getlogin()=='Cday' or os.getlogin() =='cday':
+        key_path = r"C:\Users\cday\confidential-2023-utah-hts-e7f78b32b806.json"
+    elif os.getlogin()=='bhereth': 
+        key_path = r"C:\Users\bhereth\wfrc-data-f89de5afadfb.json"
+    credentials = service_account.Credentials.from_service_account_file(
+        filename = key_path, scopes=["https://www.googleapis.com/auth/cloud-platform"],
+    )
+
+    print (key_path)
+    
+    return bigquery.Client(credentials=credentials, project=credentials.project_id,)
