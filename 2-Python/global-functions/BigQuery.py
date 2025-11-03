@@ -5,78 +5,86 @@ import os
 
 
 # get client based  on current username
-def getBigQueryClient_TDMScenarios(): 
+def getBigQueryClient_TDMScenarios():
 
     if os.getlogin()=='Cday' or os.getlogin() =='cday':
         key_path = r"C:\Users\cday\tdm-scenarios-c90ba30c3c5d.json"
-    elif os.getlogin()=='bhereth': 
+    elif os.getlogin()=='bhereth':
         key_path = r"C:\Users\bhereth\tdm-scenarios-a85044dbbfd3.json"
     # add mac user name
-    elif os.environ['USER']=='William': 
+    elif os.environ['USER']=='William':
         key_path = os.path.expanduser("~/tdm-scenarios-a85044dbbfd3.json")
     elif os.getlogin()=='sswim':
         key_path = r"C:\Users\sswim\tdm-scenarios-a5ce45fae4b0.json"
+    elif os.getlogin()=='Pukar.Bhandari' or os.getlogin() =='pukar.bhandari':
+        key_path = r""
     credentials = service_account.Credentials.from_service_account_file(
         filename = key_path, scopes=["https://www.googleapis.com/auth/cloud-platform"],
     )
-    
+
     return bigquery.Client(credentials=credentials, project=credentials.project_id,)
 
 
 # get client based  on current username
-def getBigQueryClient_StreetLight(): 
+def getBigQueryClient_StreetLight():
 
     if os.getlogin()=='Cday':
         key_path = r""
     elif os.getlogin()=='bhereth': # add mac user name
         key_path = r"C:\Users\bhereth\API Keys\streetlight-temp-analysis-e2b201d26862.json"
     # add mac user name
-    elif os.environ['USER']=='William': 
+    elif os.environ['USER']=='William':
         key_path = os.path.expanduser("~/streetlight-temp-analysis-e2b201d26862")
     elif os.getlogin()=='sswim':
+        key_path = r""
+    elif os.getlogin()=='Pukar.Bhandari' or os.getlogin() =='pukar.bhandari':
         key_path = r""
 
     credentials = service_account.Credentials.from_service_account_file(
         filename = key_path, scopes=["https://www.googleapis.com/auth/cloud-platform"],
     )
-    
+
     return bigquery.Client(credentials=credentials, project=credentials.project_id,)
 
 
 # get client based  on current username
-def getBigQueryClient_Confidential2023UtahHTS(): 
+def getBigQueryClient_Confidential2023UtahHTS():
 
     print (os.getlogin())
 
     if os.getlogin()=='Cday' or os.getlogin() =='cday':
         key_path = r"C:\Users\cday\confidential-2023-utah-hts-e7f78b32b806.json"
-    elif os.getlogin()=='bhereth': 
+    elif os.getlogin()=='bhereth':
         key_path = r"C:\Users\bhereth\confidential-2023-utah-hts-db5335615978.json"
     # add mac user name
     elif os.getlogin()=='sswim':
         key_path = r""
+    elif os.getlogin()=='Pukar.Bhandari' or os.getlogin() =='pukar.bhandari':
+        key_path = r"C:/Users/Pukar.Bhandari/.private/confidential-2023-utah-hts-5fd7ddd219a7.json"
     credentials = service_account.Credentials.from_service_account_file(
         filename = key_path, scopes=["https://www.googleapis.com/auth/cloud-platform"],
     )
 
     print (key_path)
-    
+
     return bigquery.Client(credentials=credentials, project=credentials.project_id,)
 
 
 # get client based  on current username
-def getBigQueryClient_WfrcData(): 
+def getBigQueryClient_WfrcData():
 
     print (os.getlogin())
 
     if os.getlogin()=='Cday' or os.getlogin() =='cday':
         key_path = r"C:\Users\cday\confidential-2023-utah-hts-e7f78b32b806.json"
-    elif os.getlogin()=='bhereth': 
+    elif os.getlogin()=='bhereth':
         key_path = r"C:\Users\bhereth\wfrc-data-f89de5afadfb.json"
+    elif os.getlogin()=='Pukar.Bhandari' or os.getlogin() =='pukar.bhandari':
+        key_path = r""
     credentials = service_account.Credentials.from_service_account_file(
         filename = key_path, scopes=["https://www.googleapis.com/auth/cloud-platform"],
     )
 
     print (key_path)
-    
+
     return bigquery.Client(credentials=credentials, project=credentials.project_id,)
